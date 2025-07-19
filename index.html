@@ -1,0 +1,141 @@
+# Dear-My-Friend-V2
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dear my Friend</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(120deg, #ffecd2, #fcb69f);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      h1 {
+        font-size: 2em;
+        color: #e76f51;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 1.1em;
+        color: #444;
+      }
+
+      .heart {
+        font-size: 2.5rem;
+        color: red;
+        animation: pulse 1.5s infinite;
+      }
+
+      input[type="text"],
+      select {
+        padding: 10px;
+        font-size: 1em;
+        border: 2px solid #f4a261;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        width: 80%;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 1em;
+        background: #e76f51;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #d45d3a;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heart">❤️</div>
+      <h1>Pesan untuk Sahabatku</h1>
+
+      <input type="text" id="nameInput" placeholder="Masukkan nama " />
+      <br /><br />
+      <select id="genderSelect">
+        <option value="">-- Pilih Gender --</option>
+        <option value="laki">Laki-laki</option>
+        <option value="perempuan">Perempuan</option>
+      </select>
+      <br /><br />
+      <button onclick="showMessage()">Tampilkan Pesan</button>
+
+      <p id="message" style="margin-top: 30px"></p>
+    </div>
+
+    <script>
+      function showMessage() {
+        const name = document.getElementById("nameInput").value.trim();
+        const gender = document.getElementById("genderSelect").value;
+        const message = document.getElementById("message");
+
+        if (!name || !gender) {
+          message.innerHTML =
+            "Tolong lengkapi nama dan pilih gender dulu ya 😊";
+          return;
+        }
+
+        let pesan = "";
+
+        if (gender === "laki") {
+          pesan = `
+          ${name}, I Lope You ❤️
+        `;
+        } else if (gender === "perempuan") {
+          pesan = `
+          ${name}, makasih udah jadi temen cerita 😊🌸❤️
+        `;
+        }
+
+        message.innerHTML = pesan;
+      }
+    </script>
+  </body>
+</html>
